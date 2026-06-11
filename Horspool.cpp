@@ -4,10 +4,8 @@
 
 using namespace std;
 
-vector<int> shiftTable(string pattern)
-{
+vector<int> shiftTable(string pattern) {
     int m = pattern.length();
-
     vector<int> table(256, m);
 
     for(int j = 0; j < m - 1; j++)
@@ -16,8 +14,7 @@ vector<int> shiftTable(string pattern)
     return table;
 }
 
-int horspool(string text, string pattern)
-{
+int horspool(string text, string pattern) {
     int n = text.length();
     int m = pattern.length();
 
@@ -25,14 +22,10 @@ int horspool(string text, string pattern)
 
     int i = m - 1;
 
-    while(i < n)
-    {
+    while(i < n) {
         int k = 0;
 
-        while(k < m &&
-              pattern[m - 1 - k] ==
-              text[i - k])
-        {
+        while(k < m && pattern[m - 1 - k] == text[i - k]) {
             k++;
         }
 
@@ -45,8 +38,7 @@ int horspool(string text, string pattern)
     return -1;
 }
 
-int main()
-{
+int main() {
     string text, pattern;
 
     cout << "Enter Text: ";
@@ -60,8 +52,7 @@ int main()
     if(pos == -1)
         cout << "\nPattern Not Found";
     else
-        cout << "\nPattern Found at Position "
-             << pos;
+        cout << "\nPattern Found at Position " << pos;
 
     return 0;
 }
