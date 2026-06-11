@@ -5,18 +5,22 @@ using namespace std;
 
 int partition(vector<int>& a, int low, int high) {
     int pivot = a[low];
-    int i = low;
+    int i = low + 1;
+    int j = high;
 
-    for(int j = low + 1; j <= high; j++) {
-        if(a[j] <= pivot) {
-            i++;
+    while (true) {
+        while (i <= high && a[i] <= pivot) i++;
+        while (a[j] > pivot) j--;
+
+        if (i < j) {
             swap(a[i], a[j]);
+        } else {
+            break;
         }
     }
+    swap(a[low], a[j]);
 
-    swap(a[i], a[low]);
-
-    return i;
+    return j;
 }
 
 void quickSort(vector<int>& a, int low, int high) {
