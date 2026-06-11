@@ -4,19 +4,19 @@
 using namespace std;
 
 int partition(vector<int>& a, int low, int high) {
-    int pivot = a[high];
-    int i = low - 1;
+    int pivot = a[low];
+    int i = low;
 
-    for(int j = low; j < high; j++) {
+    for(int j = low + 1; j <= high; j++) {
         if(a[j] <= pivot) {
             i++;
             swap(a[i], a[j]);
         }
     }
 
-    swap(a[i + 1], a[high]);
+    swap(a[i], a[low]);
 
-    return i + 1;
+    return i;
 }
 
 void quickSort(vector<int>& a, int low, int high) {
