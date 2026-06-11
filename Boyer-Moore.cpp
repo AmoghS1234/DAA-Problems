@@ -6,10 +6,10 @@ using namespace std;
 
 vector<int> badCharacterTable(string pattern) {
     int m = pattern.length();
-    vector<int> BC(256, m);
+    vector<int> BC(256, -1);
 
-    for(int i = 0; i < m - 1; i++)
-        BC[(unsigned char)pattern[i]] = m - 1 - i;
+    for(int i = 0; i < m; i++)
+        BC[(unsigned char)pattern[i]] = i;
 
     return BC;
 }
@@ -28,11 +28,11 @@ int boyerMoore(string text, string pattern) {
             j--;
         }
 
-        if(j < 0)
+        if(j < 0) {
             return s;
+        }
 
-        int shift = BC[(unsigned char)text[s + m - 1]];
-        s += max(1, shift);
+        s += max(1, j - BC[(unsigned char)text[s + j]]);
     }
 
     return -1;

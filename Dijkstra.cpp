@@ -31,6 +31,7 @@ void Dijkstra(vector<vector<int>>& W, int n, int source) {
 
     for(int count = 1; count < n; count++) {
         int u = MinVertex(dist, visited, n);
+        if (u == -1) break;
         visited[u] = true;
 
         for(int v = 0; v < n; v++) {

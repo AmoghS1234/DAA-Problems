@@ -31,6 +31,11 @@ void Prim(vector<vector<int>>& W, int n) {
             }
         }
 
+        if(vnear == -1) {
+            cout << "\nGraph is disconnected. MST cannot be formed.";
+            break;
+        }
+
         cout << "(" << nearest[vnear] << ", " << vnear << ") Cost = " << min << endl;
         totalCost += min;
         distance[vnear] = 0;
